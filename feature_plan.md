@@ -1,29 +1,51 @@
-Dataset Context
-The dataset contains solar plant generation data recorded at intervals with key power outputs (DC and AC), daily yield, and cumulative total yield.
+Key Metrics / Features
+Rolling 7-day Average DAILY_YIELD
 
-Key Metrics / Features for AI/ML
-Feature Name	Description	Use Case / Benefits
-Rolling 7-day Average DAILY_YIELD	Average daily energy yield over the previous 7 days per plant.	Smooths short-term fluctuations; improves daily output forecasting accuracy.
-Hourly % Change in AC_POWER	Percent change of AC power output compared to the previous hour or time interval.	Detects rapid drops/spikes indicating faults or shading events; useful for anomaly detection.
-Time Since Last Peak AC_POWER	Time elapsed since the last recorded peak AC power output for each plant.	Helps identify patterns in peak production and predict performance cycles.
-DC to AC Power Ratio (Efficiency)	Ratio of AC_POWER to DC_POWER, measuring inverter efficiency per time point.	Monitors inverter health; decreases can flag inefficiencies or failures.
-Daily Total Yield Difference	Difference in DAILY_YIELD compared to the previous day per plant.	Detects sudden changes in daily output, useful for automated alerts on underperformance.
-Cumulative Yield Growth Rate	Daily percentage increase in TOTAL_YIELD per plant.	Tracks long-term performance trends and degradation over time.
-Time-based Features (Hour, Day of Week)	Extracted from DATE_TIME to capture cyclical production patterns linked to sunlight and weather.	Enhances forecasting by incorporating time-dependent variability in production.
+Calculates the average daily energy yield over the past 7 days for each plant.
 
-How These Features Help Automate Workflows
-Forecasting: Rolling averages and time-based features allow regression and time series models to predict plant output more accurately.
+Helps smooth short-term fluctuations and improves accuracy in forecasting daily output.
 
-Anomaly Detection: Sudden percentage changes in AC power and shifts in efficiency ratios trigger alerts for maintenance teams to inspect possible issues.
+Hourly Percentage Change in AC_POWER
 
-Performance Monitoring: Tracking efficiency ratios and cumulative yield growth aids asset managers in identifying when equipment degrades or needs service.
+Measures the percent change in AC power output compared to the previous hour (or closest time interval).
 
-Reporting: Daily yield differences and peak timing help create automated performance summaries and operational reports.
+Useful for detecting sudden drops or spikes that may indicate faults, shading, or other anomalies.
 
-Next Steps
-Implement calculations of these features in your data cleaning and preprocessing notebooks.
+Time Since Last Peak AC_POWER
 
-Visualize these features to validate their behavior and impact.
+Tracks the elapsed time since the last recorded peak AC power output for each plant.
 
-Use these engineered features as inputs in the AI/ML models planned for Weeks 3–5.
+Assists in identifying production cycles and predicting upcoming peaks or performance drops.
 
+DC to AC Power Ratio (Efficiency)
+
+The ratio of AC_POWER to DC_POWER at each time point, representing inverter efficiency.
+
+Declines in this ratio can signal inverter malfunctions or efficiency losses needing maintenance.
+
+Daily Total Yield Difference
+
+The difference in DAILY_YIELD compared to the previous day for each plant.
+
+Helps automatically flag unexpected performance changes or potential issues.
+
+Cumulative Yield Growth Rate
+
+The daily percentage increase in TOTAL_YIELD per plant.
+
+Useful for monitoring long-term performance trends and degradation over time.
+
+Time-based Features (Hour of Day, Day of Week)
+
+Extracted from the DATE_TIME column to capture daily and weekly production patterns.
+
+Supports models in accounting for cyclic variations caused by sunlight, weather, and operational schedules.
+
+How These Features Support Automation
+Improve forecasting models by incorporating smoothed averages and time cycles.
+
+Enable anomaly detection by identifying sudden output changes and efficiency drops.
+
+Aid performance monitoring for proactive maintenance scheduling.
+
+Facilitate automated reporting through metrics highlighting operational status and trends.
