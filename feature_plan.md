@@ -1,5 +1,5 @@
-Key Metrics / Features
-Rolling 7-day Average DAILY_YIELD
+**Key Metrics / Features
+Rolling 7-day Average DAILY_YIELD**
 
 Calculates the average daily energy yield over the past 7 days for each plant.
 
