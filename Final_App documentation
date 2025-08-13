@@ -1,0 +1,56 @@
+Developed a full Streamlit app that allows users to upload energy data CSV files with required columns.
+
+Implemented AI model training using an ensemble of regressors (Linear Regression, Random Forest, Gradient Boosting, AdaBoost) to predict AC power output.
+
+Added anomaly detection on predicted power using Isolation Forest to flag unusual energy output patterns.
+
+Integrated OpenAI GPT to generate a natural language weekly summary based on detected anomalies.
+
+Set up the app to run in Google Colab with ngrok, enabling public access via a secure URL.
+
+Included functionality to download anomaly data as a CSV for easy integration with other tools (e.g., Zapier).
+
+Features not fully completed or pending:
+The GPT summary generation depends on a valid OpenAI API key; users need to provide their own key to use this feature.
+
+The app currently handles batch CSV upload but does not yet support real-time or streaming data.
+
+UI could be enhanced for better user experience and additional interactivity.
+
+More detailed anomaly explanations or root cause analyses could be added in future iterations.
+
+Plan for Week 5:
+Finalize user experience improvements based on feedback.
+
+Add support for additional data input formats and real-time data ingestion.
+
+Implement more robust error handling and input validation.
+
+Enhance the GPT integration to generate deeper insights, including suggested actions or alerts.
+
+Prepare a full demo and documentation package for presentation to Rayfield Systems and potential funders.
+
+How to use the app code (for demo):
+Run the provided Colab notebook cell containing the full code, including ngrok setup.
+
+After running, a public ngrok URL will be printed in the output, for example:
+Streamlit app URL: http://xxxxxx.ngrok-free.app
+
+Click the URL to open the Streamlit Energy AI Dashboard in your web browser.
+
+Use the “Upload energy CSV” button to upload your dataset file. The CSV must contain these columns:
+['date', 'hour', 'dc_power', 'daily_yield', 'total_yield', 'ac_power']
+
+The app will train/load the AI model automatically and display:
+
+A chart comparing actual vs predicted AC power.
+
+Detected anomalies marked in red on the chart.
+
+A GPT-generated natural language summary describing anomalies.
+
+Anomaly alerts with details and option to download anomaly data as CSV.
+
+You can download the anomalies CSV for integration with Zapier or other automation tools.
+
+If you have any questions or want me to help with improvements or deploying this app, just ask!
