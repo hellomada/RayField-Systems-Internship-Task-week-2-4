@@ -1,57 +1,131 @@
-Week 4 Progress Report
-completed:
+Project Overview
 
-Developed a fully functional Streamlit app that integrates my AI ensemble regression model to predict AC power from solar energy data.
+The Rayfield Systems Energy AI Dashboard is a Python/Streamlit application for monitoring and predicting AC power output, detecting anomalies, and providing actionable insights using AI and GPT.
 
-Implemented anomaly detection on the predicted AC power using Isolation Forest.
+It is designed for energy analysts, facility managers, and engineers to quickly visualize performance, detect abnormal readings, and get AI-driven recommendations.
 
-Built an interactive UI with sections for file upload, dynamic plotting of actual vs predicted AC power, anomaly markers, and a clear weekly summary.
+Features
 
-Enabled downloading a CSV file of detected anomalies for easy integration with Zapier alerts.
+Upload CSV data with required columns:
+['date','hour','dc_power','daily_yield','total_yield','ac_power']
 
-Set up ngrok tunneling to share the Streamlit app publicly from the Colab environment for easy demo access.
+Ensemble Regression Model: Predicts AC power using multiple regressors
 
-What features didn’t work or weren’t completed:
+Anomaly Detection: Isolation Forest with adjustable contamination
 
-The app currently uses a local model file saved within the session, so the model retrains from scratch if the Colab session restarts. Persistent model storage or external hosting is not yet implemented.
+Interactive Visualization:
 
-I did not integrate a real GPT-powered summary due to API access limitations; the summary is a simple anomaly count.
+Actual vs predicted AC power
 
-Zapier automation workflow is not directly integrated inside the app — users must manually upload the anomaly CSV to their Zapier triggers.
+Red markers highlight anomalies
 
-What I plan to complete in Week 5:
+GPT Actionable Insights:
 
-Implement persistent model saving/loading via cloud storage or database to avoid retraining every session.
+Summary of anomalies
 
-Add real AI-generated textual summaries using OpenAI GPT or another language model API to provide richer insights.
+Highlights unusual patterns
 
-Build automated alert triggers using Zapier integration to send Slack or email notifications on anomaly detection.
+Suggests recommended actions
 
-Enhance UI polish, including better layout responsiveness, file validation feedback, and tooltip explanations for anomalies.
+Downloadable Anomaly CSV: For integration with Zapier or other platforms
 
-How to run and use the app demo:
-After running the Colab cells, you will see a Streamlit app public URL printed by ngrok, e.g.:
-Streamlit app URL: http://xxxxxx.ngrok-free.app
+Demo Mode: Built-in CSV for instant testing
 
-Click the public URL link to open the dashboard in a new browser tab.
+Ngrok Integration: For temporary live sharing
 
-Use the file uploader on the left side to upload a CSV file with columns:
-['date', 'hour', 'dc_power', 'daily_yield', 'total_yield', 'ac_power']
-(You can use the sample CSV file I provided or your own data.)
+Requirements
 
-The app will:
+Python >= 3.9
 
-Train the model if not already trained, or load the saved model.
+Packages:
 
-Predict AC power values for your data.
+pip install streamlit pyngrok scikit-learn matplotlib pandas joblib openai
 
-Detect anomalies in the predictions and mark them on the graph in red.
 
-Show a weekly summary of anomaly counts.
+OpenAI API key (v1.0.0 or higher client)
+Set as environment variable:
 
-List detailed anomaly alerts below the summary.
+export OPENAI_API_KEY="your_openai_api_key_here"
 
-Provide a button to download the anomalies CSV for use in external alerting tools like Zapier.
 
-Refresh or upload new CSV files anytime to update the charts and results.
+Or update directly in app.py:
 
+OPENAI_API_KEY = "your_openai_api_key_here"
+
+Setup & Run
+
+Clone repository or copy files
+
+Install dependencies
+
+pip install -r requirements.txt
+
+
+Set OpenAI API Key
+
+Run Streamlit App
+
+streamlit run app.py
+
+
+Ngrok Live Share (optional, already integrated in code)
+
+# Public URL printed in console
+
+File Structure
+/app.py               # Main Streamlit app
+/ensemble_model.joblib # Saved model (auto-generated after first run)
+/demo_data.csv        # Optional embedded CSV for demo mode
+
+Usage
+
+Upload CSV or use Demo Mode
+
+Adjust Anomaly Detection Sensitivity using the slider
+
+View Chart: Actual vs Predicted AC power
+
+View Anomalies: Highlighted in red, with downloadable CSV
+
+GPT Summary: Actionable insights displayed in the summary box
+
+Demo Mode
+
+If no CSV uploaded, app can use demo_data.csv with predefined anomalies for testing:
+
+3 anomalies included
+
+First 5 rows shown in GPT summary
+
+Expected GPT output:
+
+Energy data shows anomalies in row X with unusually high values.
+Recommended actions: inspect equipment, verify sensor data, adjust operational parameters.
+
+Extending the App
+
+Add new models to VotingRegressor
+
+Enhance anomaly detection with seasonal trends or thresholds
+
+Improve GPT prompts for domain-specific recommendations
+
+Add multi-file upload or API endpoints for automated data ingestion
+
+Security / Notes
+
+Do not commit your OpenAI API key to public repos
+
+Use environment variables in production
+
+Ensure CSV input columns are consistent with required format
+
+Limit anomaly detection contamination based on dataset size
+
+Contact
+
+Author: Mustafa Arif
+
+Email: info.alphawaveai@gmail.com
+
+Project: Rayfield Systems Energy AI Dashboard
