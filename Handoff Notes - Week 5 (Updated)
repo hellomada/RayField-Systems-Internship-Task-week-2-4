@@ -1,0 +1,27 @@
+# Handoff Notes - Week 5 (Updated)
+
+## Completed:
+- Streamlit app with ensemble regression model for AC power prediction
+- Anomaly detection with Isolation Forest
+- Interactive chart with actual vs predicted power and anomaly markers
+- Demo mode ready (can use embedded CSV or uploaded CSV)
+- GPT summary integration using OpenAI API for simple weekly insights
+- UI improvements:
+  - Two-column layout (chart + summary/alerts)
+  - Download button for anomaly CSV
+  - Slider to adjust anomaly detection sensitivity
+  - Expanders for file upload/training sections
+- Failsafes for CSV reading, date parsing, model training, prediction, anomaly detection, chart rendering
+- Ngrok tunneling for live sharing
+
+## Not Completed / Future Work:
+- Persistent cloud-hosted model storage
+- Direct Zapier automation integration
+- More advanced GPT summaries with actionable recommendations
+- Additional interactive UI elements (hover tooltips, zoomable charts)
+
+## Lessons Learned:
+- Pre-testing CSV formats prevents runtime crashes
+- Embedding demo data ensures smooth presentation without external dependencies
+- Simple GPT integration can provide understandable insights quickly for non-technical users
+- Separation of workflow (upload → model → prediction → anomaly → summary → alert) makes debugging easier
