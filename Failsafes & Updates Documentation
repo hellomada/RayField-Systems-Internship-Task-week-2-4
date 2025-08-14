@@ -1,0 +1,76 @@
+Failsafes & Updates Documentation
+
+Here’s your update log for the improved code:
+
+Project: Energy AI Dashboard with AI Model & Anomaly Detection
+Version: 1.1 Failsafe & Enhancement Edition
+Author: (You)
+Date: 2025-08-14
+
+Failsafes Added
+
+Safe CSV Loading
+
+Wrapped pd.read_csv() in try/except with clear error messages.
+
+Prevents app crash on bad files or wrong formats.
+
+Column Validation
+
+Checks for exact required columns before continuing.
+
+Displays error if missing.
+
+Safe Date Parsing
+
+Date parsing in try/except so bad formats don’t stop the app.
+
+Feature Engineering Guard
+
+Returns None and stops execution if required feature columns missing.
+
+Model Training Guard
+
+If training fails, shows error instead of crashing.
+
+Model Loading Guard
+
+Handles corrupted or missing model files gracefully.
+
+Prediction Guard
+
+Catches errors if predict() fails (e.g., shape mismatch).
+
+Anomaly Detection Guard
+
+Handles failures in IsolationForest fitting and prediction.
+
+Chart Rendering Guard
+
+Prevents chart code from stopping the app if Matplotlib errors occur.
+
+Anomaly Reporting Guard
+
+Handles missing or invalid anomaly data when generating alert list or CSV.
+
+Ngrok Tunnel Guard
+
+If tunnel fails to start, informs user and still lets app run locally.
+
+Streamlit Launch Guard
+
+If streamlit run fails, prints error instead of silently dying.
+
+Enhancements Added
+
+Clear Error Messages in UI
+
+All failsafes report exactly what failed and why.
+
+No Logic Changes
+
+Original functionality preserved; only reliability improved.
+
+Future Upgrade Hooks
+
+Code structured so demo mode, sliders, caching, and sampling can be added easily.
