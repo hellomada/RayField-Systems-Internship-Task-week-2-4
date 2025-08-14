@@ -1,27 +1,89 @@
-# Handoff Notes - Week 5 (Updated)
+Completed:
 
-## Completed:
-- Streamlit app with ensemble regression model for AC power prediction
-- Anomaly detection with Isolation Forest
-- Interactive chart with actual vs predicted power and anomaly markers
-- Demo mode ready (can use embedded CSV or uploaded CSV)
-- GPT summary integration using OpenAI API for simple weekly insights
-- UI improvements:
-  - Two-column layout (chart + summary/alerts)
-  - Download button for anomaly CSV
-  - Slider to adjust anomaly detection sensitivity
-  - Expanders for file upload/training sections
-- Failsafes for CSV reading, date parsing, model training, prediction, anomaly detection, chart rendering
-- Ngrok tunneling for live sharing
+Streamlit App Functionality:
 
-## Not Completed / Future Work:
-- Persistent cloud-hosted model storage
-- Direct Zapier automation integration
-- More advanced GPT summaries with actionable recommendations
-- Additional interactive UI elements (hover tooltips, zoomable charts)
+Ensemble regression model for AC power prediction using:
 
-## Lessons Learned:
-- Pre-testing CSV formats prevents runtime crashes
-- Embedding demo data ensures smooth presentation without external dependencies
-- Simple GPT integration can provide understandable insights quickly for non-technical users
-- Separation of workflow (upload → model → prediction → anomaly → summary → alert) makes debugging easier
+Linear Regression, Random Forest, Gradient Boosting, AdaBoost combined via VotingRegressor
+
+Isolation Forest for anomaly detection with adjustable contamination levels
+
+Interactive chart showing actual vs predicted AC power, highlighting anomalies in red
+
+Demo Mode:
+
+Embedded sample CSV data for testing without uploading
+
+Allows immediate visualization and GPT summary generation
+
+GPT Summary Integration:
+
+Uses OpenAI API (new client interface) for actionable energy insights
+
+Summaries provide anomalies, patterns, and recommended actions
+
+Optional: Adjust API key easily via OPENAI_API_KEY variable or environment variable
+
+UI Improvements:
+
+Two-column layout: Chart + Summary/Anomalies
+
+Download button for anomaly CSV for Zapier or further automation
+
+Slider to adjust anomaly detection sensitivity
+
+Expanders for file upload/training sections
+
+Error messages displayed cleanly via st.error
+
+Failsafes & Robustness:
+
+CSV format validation and missing column detection
+
+Date parsing validation
+
+Model training and loading error handling
+
+Prediction, anomaly detection, chart rendering safe-guards
+
+Ngrok Integration:
+
+Allows live sharing of Streamlit app
+
+Automatic setup and teardown included
+
+Not Completed / Future Work:
+
+Persistent cloud-hosted model storage for multi-user access
+
+Direct Zapier/automation workflow integration
+
+More advanced GPT summaries:
+
+Multi-step actionable insights
+
+Trend predictions
+
+Recommendations with priorities
+
+Enhanced UI elements:
+
+Hover tooltips over chart points
+
+Zoomable / pan-able charts
+
+Interactive anomaly selection
+
+Multi-file upload and batch predictions
+
+Lessons Learned:
+
+Validating CSV formats in advance prevents runtime errors
+
+Demo mode is critical for smooth testing and presentations
+
+GPT summaries can quickly provide actionable insights for non-technical users
+
+Clear separation of workflow stages (upload → model → prediction → anomaly → summary → alert) simplifies debugging and maintenance
+
+Handling API key securely and clearly is essential for collaboration
