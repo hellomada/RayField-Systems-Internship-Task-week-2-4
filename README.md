@@ -1,111 +1,88 @@
-#SolGuard – Energy AI Dashboard
+# ⚡ **SolGuard – Energy AI Dashboard**  
+**_Rayfield Systems Intern Project_**
 
-#Rayfield Systems Intern Project
+---
 
-"""Overview"""
+## 📌 **Overview**
+**SolGuard** is an **AI-powered solar energy monitoring and analytics dashboard** that helps operators:
 
-SolGuard is an AI-powered solar energy monitoring and analytics dashboard that helps operators:
+- **Predict AC power output** using an ensemble of regression models.  
+- **Detect anomalies** in energy data with an adjustable sensitivity slider.  
+- **Generate GPT-powered insights** for actionable recommendations.  
+- **Visualize energy performance** through interactive charts.  
+- **Share live dashboards securely** using Ngrok.  
 
-Predict AC power output using an ensemble of regression models.
+This system is designed to **reduce downtime**, **improve maintenance planning**, and **optimize energy yield** by automating detection and reporting.  
 
-Detect anomalies in energy data with an adjustable sensitivity slider.
+---
 
-Generate GPT-powered insights for actionable recommendations.
-
-Visualize energy performance through interactive charts.
-
-Share live dashboards securely using Ngrok.
-
-This system is designed to reduce downtime, improve maintenance planning, and optimize energy yield by automating detection and reporting.
-
-Why This is Needed
-
+## ❓ **Why This is Needed**
 Solar energy operators face several challenges:
 
-Energy loss: Equipment faults or inefficiencies can cause 5–20% yearly production losses.
+- **<ins>Energy loss</ins>** – Equipment faults or inefficiencies can cause **5–20% yearly production losses**.  
+- **<ins>High maintenance costs</ins>** – Delays in detection can cost **$1,000–$5,000** per incident in large-scale systems.  
+- **<ins>Data overload</ins>** – Thousands of readings per day make manual analysis impractical.  
+- **<ins>Forecasting gaps</ins>** – Inaccurate predictions disrupt grid planning and sales.  
 
-High maintenance costs: Delays in detection can cost $1,000–$5,000 per incident in large-scale systems.
+**SolGuard** addresses these by combining **automated ML-based forecasting**, **anomaly detection**, and **AI-driven summaries** in a **user-friendly Streamlit interface**.
 
-Data overload: Thousands of readings per day make manual analysis impractical.
+---
 
-Forecasting gaps: Inaccurate predictions disrupt grid planning and sales.
+## 🚀 **Features**
+### **1. AC Power Prediction**
+- Uses an **ensemble model** combining:
+  - **Linear Regression** – Baseline relationships.
+  - **Random Forest** – Handles non-linear patterns.
+  - **Gradient Boosting** – Improves predictions by focusing on errors.
+  - **AdaBoost** – Adapts to difficult-to-predict cases.
+- **VotingRegressor** combines outputs, weighted by performance.
 
-SolGuard addresses these with:
+### **2. Anomaly Detection**
+- **Isolation Forest** algorithm.  
+- Adjustable **contamination parameter**: `0.01 – 0.2`.  
+- Highlights **unusual spikes/drops** in AC power.
 
-Automated ML-based forecasting.
+### **3. GPT-Powered Analysis**
+- Summarizes **weekly performance**.
+- Explains **anomalies**.
+- Suggests **maintenance actions**.
+- Provides **optimization strategies**.
 
-Anomaly detection with Isolation Forest.
-
-AI-driven summaries and recommendations.
-
-A user-friendly Streamlit interface for live monitoring.
-
-Features
-1. AC Power Prediction
-
-Uses an ensemble model combining:
-
-Linear Regression (baseline relationships)
-
-Random Forest (non-linear patterns)
-
-Gradient Boosting (error-focused improvement)
-
-AdaBoost (weighted learning for hard cases)
-
-VotingRegressor combines model outputs weighted by past performance.
-
-2. Anomaly Detection
-
-Isolation Forest algorithm.
-
-Adjustable sensitivity (contamination parameter: 0.01 – 0.2).
-
-Highlights unusual spikes/drops in AC power.
-
-3. GPT-Powered Analysis
-
-Summarizes weekly performance.
-
-Explains anomalies.
-
-Suggests maintenance actions.
-
-Recommends optimization strategies.
-
-4. Interactive Dashboard
-
-CSV file upload with required columns:
+### **4. Interactive Dashboard**
+- CSV file upload with **required columns**:
 
 date, hour, dc_power, daily_yield, total_yield, ac_power
 
 
-Line charts showing actual vs. predicted AC power.
+- **Charts**: Actual vs. Predicted AC power.
+- **Red markers**: Anomalies.
+- **Downloadable CSV**: Anomaly list.
 
-Red markers for anomalies.
+### **5. Live Sharing via Ngrok**
+- Secure, **temporary HTTPS link**.
+- Optional **password protection**.
+- Auto-closes when the server stops.
 
-Downloadable CSV of detected anomalies.
+---
 
-5. Live Sharing via Ngrok
+## 📊 **Data Requirements**
+| Column        | Description                               |
+|---------------|-------------------------------------------|
+| `date`        | Date of reading (YYYY-MM-DD)              |
+| `hour`        | Hour of the day (0–23)                    |
+| `dc_power`    | Direct current power reading              |
+| `daily_yield` | Cumulative daily production               |
+| `total_yield` | Lifetime energy production                |
+| `ac_power`    | Alternating current power output          |
 
-Generates secure, temporary HTTPS link for remote viewing.
+---
 
-Optional password protection.
-
-Auto-closes when the server stops.
-
-Data Requirements
-Column	Description
-date	Date of reading (YYYY-MM-DD)
-hour	Hour of the day (0–23)
-dc_power	Direct current power reading
-daily_yield	Cumulative daily production
-total_yield	Lifetime energy production
-ac_power	Alternating current power output
-Installation
-1. Clone the Repository
+## ⚙️ **Installation**
+### **1. Clone the Repository**
+```bash
 git clone https://github.com/<your-username>/solguard.git
 cd solguard
+
 
 2. Install Dependencies
 pip install streamlit pyngrok scikit-learn matplotlib pandas joblib openai
@@ -118,78 +95,66 @@ ngrok authtoken <YOUR_NGROK_TOKEN>
 
 4. Configure OpenAI API Key
 
-Replace OPENAI_API_KEY in app.py with your actual key:
+Edit in app.py:
 
 OPENAI_API_KEY = "sk-xxxxxxxxxxxxxxxx"
 
-Running the App
+▶️ Running the App
 streamlit run app.py
 
 
 If Ngrok is set up, you’ll see a public HTTPS URL in the terminal.
 
-Usage
+🖥️ Usage
 
 Upload CSV – The app validates required columns.
 
-Adjust Sensitivity – Use the slider to detect more/less anomalies.
+Adjust Sensitivity – Detect more/less anomalies.
 
-View Predictions – Chart compares actual vs. predicted AC power.
+View Predictions – Compare actual vs. predicted AC power.
 
-Check Alerts – Anomaly list with timestamps and values.
+Check Alerts – See anomalies with timestamps and values.
 
-Get AI Summary – GPT explains findings and recommends actions.
+Get AI Summary – GPT explains and recommends actions.
 
 Download Reports – Export anomalies as CSV.
 
-Share Live Dashboard – Send Ngrok link to stakeholders.
+Share Dashboard – Send Ngrok link to stakeholders.
 
-Failsafes & Reliability
+🛡 Failsafes & Reliability
 
-CSV format validation with clear errors.
+CSV format validation with clear error messages.
 
 Graceful handling of missing/invalid data.
 
 Auto-retraining if the model file is missing.
 
-Backup visualizations if chart rendering fails.
+Backup visualizations if charts fail.
 
 Ngrok tunnel auto-closes to maintain security.
 
-Future Improvements
-
-From the Rayfield Systems Demo Day slides:
+📈 Future Improvements
 
 Cloud-hosted models for scalability.
 
-Advanced GPT summaries with multi-step reasoning.
+Advanced GPT summaries with deeper reasoning.
 
-Enhanced UI (hover, zoom interactions).
+Enhanced UI with hover & zoom.
 
-Multi-file upload and workflow automation.
+Multi-file uploads & workflow automation.
 
-Example Workflow
+🔄 Example Workflow
 
-Operator uploads a week’s solar data CSV.
+Operator uploads a week’s solar data.
 
-App trains or loads ensemble model.
+Model trains/loads.
 
 Predictions generated for AC power.
 
-Isolation Forest flags e.g., 3 anomalies for the week.
+Example: 3 anomalies detected for the week.
 
-GPT summarizes:
+GPT explains:
+
 "3 anomalies detected on high-temperature afternoons; possible inverter overheating. Recommend fan inspection and panel cleaning."
 
 Operator downloads anomaly report and schedules maintenance.
-
-References
-
-Rayfield System Demo Day Slides, 2025
-.
-
-Scikit-learn documentation: https://scikit-learn.org
-
-OpenAI API documentation: https://platform.openai.com/docs
-
-Ngrok: https://ngrok.com
